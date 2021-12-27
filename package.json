@@ -1,0 +1,31 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "Image Processing API",
+  "main": "main.ts",
+  "scripts": {
+    "start": "tsc && node dist/main.js",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/islamhanafi94/image-processing-api.git"
+  },
+  "author": "Islam Hanafi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/islamhanafi94/image-processing-api/issues"
+  },
+  "homepage": "https://github.com/islamhanafi94/image-processing-api#readme",
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
