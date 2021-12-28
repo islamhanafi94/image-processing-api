@@ -1,6 +1,14 @@
-// Basic setup and running TS + linting
-console.log('islam');
-console.log('islam');
-console.log('islam');
+import express from 'express';
 
-let x = ['c'];
+const app = express();
+
+const PORT = process.env.PORT || 1234;
+
+app.get('/', (req, res) => {
+  return res.send({
+    msg: 'Hello123',
+  });
+});
+app.listen(PORT, () => {
+  console.log(`App is running at http://localhost:${PORT}`);
+});
