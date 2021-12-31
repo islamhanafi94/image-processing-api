@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { promises as fs } from 'fs';
+import { promises as fs, constants } from 'fs';
 import { THUMBNAIL_PATH } from '../constants';
+import { formatThumbnailURI } from '../utils/formatters';
 
 export async function cachingImage(
   req: Request,
@@ -8,17 +9,14 @@ export async function cachingImage(
   next: NextFunction,
 ) {
   try {
-    // fileName should be here from the previous middleware
-    const {
-      file_name: fileName,
-      height,
-      width,
-    } = { file_name: 'fjord', height: 400, width: 400 } || req.query;
+    const { fileName, height, width } = req.query;
+    await fs.access(
+      formatThumbnailURI(fileName as string, height as string, width as string),
+      constants.F_OK,
+    );
+    return res.render('image', { imageURL: `${THUMBNAIL_PATH}/${fileName}` });
 
-    const thumbnailUrl = `${THUMBNAIL_PATH}/${fileName}_${width}_${height}.jpg`;
-
-    await fs.access(thumbnailUrl);
-    return res.send({ msg: `${THUMBNAIL_PATH}/${fileName}` });
+    return res.status(200).send({ msg: `${THUMBNAIL_PATH}/${fileName}` });
   } catch (error) {
     next();
   }
