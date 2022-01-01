@@ -1,2 +1,2 @@
-export const FULL_IMAGES_PATH = 'public/images/full';
-export const THUMBNAIL_PATH = 'public/images/thumbnail';
+export const FULL_IMAGES_PATH = 'src/images/full';
+export const THUMBNAIL_PATH = 'src/images/thumbnail';

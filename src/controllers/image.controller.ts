@@ -15,12 +15,7 @@ export const ImageController = {
         .resize(Number(width), Number(height))
         .toFile(outputURL);
 
-      return res.render('index', { title: 'Hey', message: 'Hello there!' });
-
-      return res.status(200).send({
-        imageURL: outputURL,
-        msg: 'success',
-      });
+      return res.sendFile(outputURL, { root: './' });
     } catch (error) {
       return res.status(400).send({
         msg: 'Something went wrong',

@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { promises as fs, constants } from 'fs';
-import { THUMBNAIL_PATH } from '../constants';
 import { formatThumbnailURI } from '../utils/formatters';
 
 export async function cachingImage(
@@ -10,13 +9,13 @@ export async function cachingImage(
 ) {
   try {
     const { fileName, height, width } = req.query;
-    await fs.access(
-      formatThumbnailURI(fileName as string, height as string, width as string),
-      constants.F_OK,
+    const cached = formatThumbnailURI(
+      fileName as string,
+      height as string,
+      width as string,
     );
-    return res.render('image', { imageURL: `${THUMBNAIL_PATH}/${fileName}` });
-
-    return res.status(200).send({ msg: `${THUMBNAIL_PATH}/${fileName}` });
+    await fs.access(cached, constants.F_OK);
+    return res.sendFile(cached, { root: './' });
   } catch (error) {
     next();
   }
