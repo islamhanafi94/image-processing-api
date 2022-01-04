@@ -9,6 +9,10 @@ This is a simple image resizing API using Nodejs/TS as part of Udacity's Advance
 - Add `.env` file containing your environment variables like `.example.env` if needed
 - Run the server `npm start`
 
+Server is running by default at port 3000
+
+you can check if it is running at `http://localhost:3000/api/images`
+
 ### Testing
 
 ```bash
@@ -33,7 +37,7 @@ npm run format
 
 ### Usage
 
-### Image API 
+### Image API
 
 `GET` `/api/images`
 
@@ -44,4 +48,3 @@ valid options (As query strings)
 - height
 
 Example of a valid request : `/api/images?fileName=fjord&width=123&height=333`
-
