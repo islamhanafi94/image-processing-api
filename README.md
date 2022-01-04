@@ -30,3 +30,18 @@ npm run lint:fix
 ```
 npm run format
 ```
+
+### Usage
+
+### Image API 
+
+`GET` `/api/images`
+
+valid options (As query strings)
+
+- fileName=fjord&width=123&height=333
+- width
+- height
+
+Example of a valid request : `/api/images?fileName=fjord&width=123&height=333`
+
