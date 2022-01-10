@@ -6,7 +6,7 @@ export async function inputValidator(
   res: Response,
   next: NextFunction,
 ) {
-  const { fileName, height, width } = req.query as ImageParams;
+  const { fileName, height, width } = req.query as ImageInfo;
 
   try {
     await validateImageName(fileName);
@@ -20,7 +20,7 @@ export async function inputValidator(
   }
 }
 
-type ImageParams = {
+type ImageInfo = {
   fileName: string;
   height: string;
   width: string;
