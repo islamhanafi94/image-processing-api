@@ -6,7 +6,7 @@ describe('ResizeImage', () => {
       const validImageName = 'fjord';
       const width = '100';
       const height = '100';
-      const expectedURL = `src/images/thumbnail/${validImageName}_${width}_${height}.jpg`;
+      const expectedURL = `images/thumbnail/${validImageName}_${width}_${height}.jpg`;
       const outputURL = await resizeImage({
         fileName: validImageName,
         width: '100',
